@@ -5,6 +5,65 @@
   -ms-border-radius: $radius;
   border-radius: $radius;
 }
+ //if elses
+@mixin border-stroke($val) {
+  @if $val == light {
+    border: 1px solid black;
+  } @else if $val == medium {
+    border: 3px solid black;
+  } @else if $val == heavy {
+    border: 6px solid black;
+  } @else {
+    border: none;
+  }
+}
+
+#box {
+  width: 150px;
+  height: 150px;
+  background-color: red;
+  @include border-stroke(heavy);
+}
+
+//sass for loop
+// @for $j from 1 to 6 {
+//   .text-#{$j} {
+//       font-size: 15px*$j;
+//   }
+// }
+
+//sass WHILE loop
+$x: 1;
+
+@while $x <= 5 {
+    .text-#{$x} { font-size: 15px*$x }
+    $x: $x + 1;
+}
+
+//each
+@each $color in blue, black, red {
+  .#{$color}-bg {
+    background-color: $color
+  }
+}
+
+div {
+  height: 200px;
+  width: 200px;
+}
+
+h3{
+  text-align: center;
+}
+.info{
+  width: 200px;
+  border: 1px solid black;
+  margin: 0 auto;
+}
+.info-important {
+  @extend .info;
+  background-color: magenta;
+}
 
 //variables
 $text-color: red;
